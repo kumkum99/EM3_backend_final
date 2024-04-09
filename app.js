@@ -7,13 +7,13 @@ const port = 5000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs'); // Assuming you're using EJS templates
+app.set('view engine', 'ejs'); 
 app.use(express.static(path.join(__dirname, 'public')));
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/shanti', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://anshikapatel:f1kOiRHKop1Fd3xB@cluster0.iimiicy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/shanti', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
-    console.log('Connected to MongoDB');
+    console.log('Connected to MongoDBATLAS');
 });
 
 // Define a contact model
