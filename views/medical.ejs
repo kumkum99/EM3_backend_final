@@ -1,0 +1,381 @@
+<%- include('./partials/header.ejs', {title: 'Home'}) -%>
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="keywords" content="Site keywords here">
+		<meta name="description" content="">
+		<meta name='copyright' content=''>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Title -->
+        <title>Medical</title>
+		
+		<!-- Favicon -->
+        <link rel="icon" href="img/favicon.png">
+		
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- Nice Select CSS -->
+		<link rel="stylesheet" href="css/nice-select.css">
+		<!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+		<!-- icofont CSS -->
+        <link rel="stylesheet" href="css/icofont.css">
+		<!-- Slicknav -->
+		<link rel="stylesheet" href="css/slicknav.min.css">
+		<!-- Owl Carousel CSS -->
+        <link rel="stylesheet" href="css/owl-carousel.css">
+		<!-- Datepicker CSS -->
+		<link rel="stylesheet" href="css/datepicker.css">
+		<!-- Animate CSS -->
+        <link rel="stylesheet" href="css/animate.min.css">
+		<!-- Magnific Popup CSS -->
+        <link rel="stylesheet" href="css/magnific-popup.css">
+		
+		<!-- Medipro CSS -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<style>
+			/* Custom CSS for medical section */
+				#medicine-list .card {
+					margin-bottom: 20px; /* Add space between cards */
+					margin-right: 20px; /* Add space between cards horizontally */
+					padding: 15px; /* Add padding inside card */
+				}
+				#medicine-list .card:last-child {
+					margin-right: 0; /* Remove right margin for the last card */
+				}
+				#medicine-list .card-body {
+					padding: 10px; /* Add padding inside card body */
+				}
+				/* Custom CSS for medical section */
+				#medicine-search-form {
+					margin-bottom: 20px; /* Add margin to bottom of search form */
+				}
+				.container {
+					padding-top: 20px; /* Add padding to the top of the container */
+				}
+				.card {
+					margin-bottom: 20px; /* Add margin to bottom of each card */
+				}
+				.container {
+					padding-top: 20px; /* Add padding to the top of the container */
+				}
+					/* CSS for smaller buttons */
+					.small-btn {
+						font-size: 0.8rem; /* Adjust the font size as needed */
+						padding: 0.2rem 0.4rem; /* Adjust the padding as needed */
+					}
+				</style>
+	</head>
+    <body>
+	
+		<!-- Preloader -->
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+
+                <div class="indicator"> 
+                    <svg width="16px" height="12px">
+                        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader -->
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs overlay">
+			<div class="container">
+				<div class="bread-inner">
+					<div class="row">
+						<div class="col-12">
+							<h2>Medical Store</h2>
+							<ul class="bread-list">
+								<li><a href="/services">Services</a></li>
+								<li><i class="icofont-simple-right"></i></li>
+								<li class="active">Medical Store</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+<!-- medical section start -->
+<div class="container">
+    <!-- Search Bar -->
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form class="d-flex" role="search" id="medicine-search-form">
+            <input class="form-control me-2" type="search" placeholder="Search Medicines" aria-label="Search" id="medicine-search-input">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="col-md-6 text-end">
+                <!-- Cart Display Area -->
+                <div id="cart-display">
+                    <h2>Cart</h2>
+                    <ul id="cart-items"></ul>
+                    <div id="total-amount"></div>
+                </div>
+            </div>
+</div>
+<script>
+	// Add an input event listener to the search input field
+document.getElementById('medicine-search-input').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase(); // Retrieve the value entered by the user and convert it to lowercase
+
+    // Iterate over all the medicine cards in the container
+    document.querySelectorAll('#medicine-list .card').forEach(card => {
+        const medicineName = card.querySelector('.card-title').textContent.toLowerCase(); // Retrieve the medicine name from the card and convert it to lowercase
+        
+        // Check if the medicine name contains the search term entered by the user
+        if (medicineName.includes(searchTerm)) {
+            card.style.display = 'block'; // Display the card if the medicine name matches the search term
+        } else {
+            card.style.display = 'none'; // Hide the card if the medicine name does not match the search term
+        }
+    });
+});
+
+</script>
+    <!-- Medicine Boxes -->
+    <div class="row" id="medicine-list">
+        <!-- Medicine boxes code here -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/pcm1.webp" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Paracetamol</h5>
+                    <p class="card-text">Price: Rs. 50</p>
+                    <button class="btn btn-primary add-to-cart" id=1 data-name="Paracetamol" data-price="50">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/aspirin.jpg" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Aspirin</h5>
+                    <p class="card-text">Price: Rs. 50</p>
+                    <button class="btn btn-primary add-to-cart" id=2 data-name="Aspirin" data-price="50">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/bena.png" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Benadryl</h5>
+                    <p class="card-text">Price: Rs. 150</p>
+                    <button class="btn btn-primary add-to-cart" id=3 data-name="Benadryl" data-price="150">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		   <!-- Medicine boxes code here -->
+		   <div class="col-md-4">
+            <div class="card">
+                <img src="img/win.jpg" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Win Cold</h5>
+                    <p class="card-text">Price: Rs. 50</p>
+                    <button class="btn btn-primary add-to-cart" id=4 data-name="Wincold" data-price="50">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/morph.jpg" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Morphine</h5>
+                    <p class="card-text">Price: Rs. 100</p>
+                    <button class="btn btn-primary add-to-cart" id=5 data-name="Morphine" data-price="100">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/exce.png" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Excedrin</h5>
+                    <p class="card-text">Price: Rs. 50</p>
+                    <button class="btn btn-primary add-to-cart" id=6 data-name="Excedrin" data-price="50">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		   <!-- Medicine boxes code here -->
+		   <div class="col-md-4">
+            <div class="card">
+                <img src="img/vicks.png" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Vicks VapoRub</h5>
+                    <p class="card-text">Price: Rs. 100</p>
+                    <button class="btn btn-primary add-to-cart" id=7 data-name="Vicks VapoRub" data-price="100">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/zaditor.jpg" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Zaditor</h5>
+                    <p class="card-text">Price: Rs. 60</p>
+                    <button class="btn btn-primary add-to-cart" id=8 data-name="Zaditor" data-price="60">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/drug.jpg" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Ibuprofen</h5>
+                    <p class="card-text">Price: Rs. 120</p>
+                    <button class="btn btn-primary add-to-cart" id=9 data-name="Ibuprofen" data-price="120">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		   <!-- Medicine boxes code here -->
+		   <div class="col-md-4">
+            <div class="card">
+                <img src="img/vaseline.webp" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Vaseline</h5>
+                    <p class="card-text">Price: Rs. 30</p>
+                    <button class="btn btn-primary add-to-cart" id=10 data-name="Vaseline" data-price="30">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/moov.jpg" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Moov</h5>
+                    <p class="card-text">Price: Rs. 200</p>
+                    <button class="btn btn-primary add-to-cart" id=11 data-name="Moov" data-price="200">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/gas.jpg" class="card-img-top" alt="Medicine Image">
+                <div class="card-body">
+                    <h5 class="card-title">Gas X</h5>
+                    <p class="card-text">Price: Rs. 120</p>
+                    <button class="btn btn-primary add-to-cart" data-name="Gas X" id=12 data-price="120">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Initialize an empty cart
+        var cart = [];
+
+        // Function to add item to cart
+        function addToCart(item) {
+            cart.push(item);
+            updateCart();
+        }
+
+        // Function to remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Function to update cart and total amount
+        function updateCart() {
+            var total = 0;
+            var cartItems = $('#cart-items');
+            cartItems.empty(); // Clear previous cart items
+
+            // Add each item to the cart and calculate total amount
+            cart.forEach(function(item, index) {
+                total += item.price;
+                cartItems.append('<li>' + item.name + ' - Rs. ' + item.price + ' <button class="remove-item" data-index="' + index + '">Remove</button></li>');
+            });
+
+            // Update total amount display
+            $('#total-amount').text('Total: Rs. ' + total);
+        }
+
+        // Add click event listener to add-to-cart buttons
+        $('.add-to-cart').click(function() {
+            var name = $(this).data('name');
+            var price = $(this).data('price');
+            addToCart({ name: name, price: price });
+        });
+
+        // Add click event listener to remove-item buttons
+        $(document).on('click', '.remove-item', function() {
+            var index = $(this).data('index');
+            removeFromCart(index);
+        });
+    });
+</script>
+<!-- medical section end -->
+		<!-- jquery Min JS -->
+        <script src="js/jquery.min.js"></script>
+		<!-- jquery Migrate JS -->
+		<script src="js/jquery-migrate-3.0.0.js"></script>
+		<!-- jquery Ui JS -->
+		<script src="js/jquery-ui.min.js"></script>
+		<!-- Easing JS -->
+        <script src="js/easing.js"></script>
+		<!-- Color JS -->
+		<script src="js/colors.js"></script>
+		<!-- Popper JS -->
+		<script src="js/popper.min.js"></script>
+		<!-- Bootstrap Datepicker JS -->
+		<script src="js/bootstrap-datepicker.js"></script>
+		<!-- Jquery Nav JS -->
+        <script src="js/jquery.nav.js"></script>
+		<!-- Slicknav JS -->
+		<script src="js/slicknav.min.js"></script>
+		<!-- ScrollUp JS -->
+        <script src="js/jquery.scrollUp.min.js"></script>
+		<!-- Niceselect JS -->
+		<script src="js/niceselect.js"></script>
+		<!-- Tilt Jquery JS -->
+		<script src="js/tilt.jquery.min.js"></script>
+		<!-- Owl Carousel JS -->
+        <script src="js/owl-carousel.js"></script>
+		<!-- counterup JS -->
+		<script src="js/jquery.counterup.min.js"></script>
+		<!-- Steller JS -->
+		<script src="js/steller.js"></script>
+		<!-- Wow JS -->
+		<script src="js/wow.min.js"></script>
+		<!-- Magnific Popup JS -->
+		<script src="js/jquery.magnific-popup.min.js"></script>
+		<!-- Counter Up CDN JS -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Main JS -->
+		<script src="js/main.js"></script>
+    </body>
+</html>
+
+
+
+
+<%- include('./partials/footer.ejs') -%>
